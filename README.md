@@ -173,37 +173,29 @@ dụ về hai cách lặp.
 
 ```
         .ORIG x3000
-        IN ;nhập kí tự thứ nhất
-        LD R1,ASCII_0 ;chuyển mã ascii 
-        thành số
+        IN 
+        LD R1,ASCII_0 
         NOT R1,R1
         ADD R1,R1,#1
-        ADD R2,R0,R1 ;lưu giá trị số vào 
-        R2
+        ADD R2,R0,R1 
         IN
-        ADD R3,R0,R1 ;và R3
-        ADD R4,R2,R3 ;tổng của 2 số
-        LD R0,DIA_CHI_LUU ;lấy địa chỉ lưu dữ
-        liệu 
-        STR R2,R0,#0 ;lưu dưới dạng base + 
-        offset
+        ADD R3,R0,R1 
+        ADD R4,R2,R3 
+        LD R0,DIA_CHI_LUU 
+        STR R2,R0,#0 
         STR R3,R0,#1
         STR R4,R0,#2
-        LEA R0,STROUT ;lấy ô nhớ đia chỉ
-        của chuối thông báo
-        PUTS ;xuất chuỗi ra trước, 
-        xuất kết quả sau
+        LEA R0,STROUT 
+        PUTS
         LD R1,ASCII_0
-        ADD R5,R4,#-10 ;kiểm tra tổng có bao 
-        nhiêu chữ số
+        ADD R5,R4,#-10 
         BRzp XUAT_2_CHU_SO
-        ADD R0,R4,R1 ;xuất 1 chữ số
+        ADD R0,R4,R1 
         OUT
         BR KET_THUC
-XUAT_2_CHU_SO ADD R0,R1,#1 ;chữ số đầu tiên chắc chắn là 1
+XUAT_2_CHU_SO ADD R0,R1,#1 
         OUT
-        ADD R0,R5,R1 ;sau khi trừ 10 thì 
-R5 chứa chữ số hàng đơn vị
+        ADD R0,R5,R1 
         OUT
 KET_THUC HALT
 ASCII_0 .FILL #48
